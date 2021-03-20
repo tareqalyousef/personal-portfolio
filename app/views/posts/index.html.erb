@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag "posts" %>
+
+<body>
+    <div id="page-container">
+        <div id="title">
+            <p style="font-size: 350%; color: #ffffff; margin: 0px; text-align: center; line-height: 128px;">Posts</p>
+        </div>
+        <% @posts.each do |p| %>
+            <div class="entry">
+                <div style="width: 100%; height: 45px; display: flex; line-height: 45px;">
+                    <div style="min-width: 300px; height: 60px; overflow: hidden; flex-grow: 1;">
+                        <p class="entry-title">
+                            <%= link_to p.title, post_path(p), class: "glow-text" %>
+                        </p>
+                    </div>
+                </div>
+                <div style="width: 100%; height: 20px; display: flex; line-height: 20px;">
+                    <div style="height: 20px; overflow: hidden; line-height: 20px; font-size: 120%; flex-grow: 1; margin-top: 10px; margin-left: 10px;">
+                        <%= p.description %>
+                    </div>
+                    <% if admin_signed_in? %>
+                        <div style="overflow: hidden; flex-shrink: 0; text-align: right; vertical-align: center; height: 40px;">
+                            <%= link_to edit_post_path(p), :class => "glow-icon" do %>
+                                <i class="fab fa-edit fa" style="color:#FAFAFA;  margin-right: 5px; margin-left: 10px; font-size: medium; margin-top: 10px"></i>
+                            <% end %>
+
+                            <%= link_to destroy_post_path(p), method: :delete, :class => "glow-icon" do %>
+                                <i class="fab fa-trash fa" style="color:#FAFAFA; top: 32px; margin-right: 10px; margin-left: 5px; font-size: medium;"></i>
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+        <div id="sub" style="max-width: 768px; min-width: 500px;">
+            <%= link_to root_path, :class => "btn-gradient", :style => "margin-left: 0px;" do %>
+                <span style="transform: skew(-20deg);">Back</span>
+            <% end %>
+            <% if admin_signed_in? %>
+                <%= link_to new_post_path, :class => "btn-gradient", :style => "margin-right: 0px;" do %>
+                    <span style="transform: skew(-20deg);">Create Post</span>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</body>

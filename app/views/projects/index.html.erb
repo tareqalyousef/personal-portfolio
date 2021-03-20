@@ -1,0 +1,77 @@
+<%= stylesheet_link_tag "projects" %>
+
+<body>
+    <div id="page-container">
+        <div id="title">
+            <p style="font-size: 350%; color: #ffffff; margin: 0px; text-align: center; line-height: 128px;">Projects</p>
+        </div>
+        <% @projects.each do |p| %>
+            <% if p.status == 'Completed' %>
+                <% background = '-webkit-linear-gradient(right, rgba(0, 50, 0, 0.1), rgba(0, 100, 0, 0.1));' %>
+                <% shadow = '0px 0px 2px rgb(0, 255, 0);' %>
+            <% elsif p.status == 'In-Progress' %>
+                <% background = '-webkit-linear-gradient(right, rgba(50, 25, 0, 0.1), rgba(100, 50, 0, 0.1));' %>
+                <% shadow = '0px 0px 2px rgb(255, 128, 0);' %>
+            <% elsif p.status == 'Cancelled' %>
+                <% background = '-webkit-linear-gradient(right, rgba(50, 0, 0, 0.1), rgba(100, 0, 0, 0.1));' %>
+                <% shadow = '0px 0px 2px rgb(255, 0, 0);' %>
+            <% end %>
+            <div class="entry" style=" background: <%= background %>; box-shadow: <%= shadow %>;">
+                <div style="width: 100%; height: 45px; display: flex; line-height: 45px;">
+                    <div style="min-width: 300px; height: 60px; overflow: hidden; flex-grow: 1;">
+                        <p class="entry-title">
+                            <%= link_to p.title, project_path(p), class: "glow-text" %>
+                            <% if p.status == 'Completed' %>
+                                <span> </span><span class="badge" style="background-color: green;">Completed</span>
+                            <% end %>
+                            <% if p.status == 'In-Progress' %>
+                                <span> </span><span class="badge" style="background-color: orange;">In-Progress</span>
+                            <% end %>
+                            <% if p.status == 'Cancelled' %>
+                                <span> </span><span class="badge" style="background-color: red;">Cancelled</span>
+                            <% end %>
+                        </p>
+                    </div>
+                    <div style="overflow: hidden; height: 45px; flex-shrink: 0; text-align: right; vertical-align: center; line-height: 45px;">
+                        <% if !p.github_link.blank? %>
+                            <%= link_to p.github_link, :class => "glow-icon" do %>
+                                <i class="fab fa-github fa" style="color:#FAFAFA; margin-right: 5px; margin-left: 10px; font-size: x-large;"></i>
+                            <% end %>
+                        <% end %>
+                            <% if !p.external_link.blank? %>
+                                <%= link_to p.external_link, :class => "glow-icon" do %>
+                                <i class="fab fa-external-link fa" style="color:#FAFAFA; margin-right: 10px; margin-left: 5px; font-size: x-large;"></i>
+                            <% end %>
+                        <% end%>
+                    </div>
+                </div>
+                <div style="width: 100%; height: 20px; display: flex; line-height: 20px;">
+                    <div style="height: 20px; overflow: hidden; line-height: 20px; font-size: 120%; flex-grow: 1; margin-top: 10px; margin-left: 10px;">
+                        <%= p.description %>
+                    </div>
+                    <% if admin_signed_in? %>
+                        <div style="overflow: hidden; flex-shrink: 0; text-align: right; vertical-align: center; height: 40px;">
+                            <%= link_to edit_project_path(p), :class => "glow-icon" do %>
+                                <i class="fab fa-edit fa" style="color:#FAFAFA;  margin-right: 5px; margin-left: 10px; font-size: medium; margin-top: 10px"></i>
+                            <% end %>
+
+                            <%= link_to destroy_project_path(p), method: :delete, :class => "glow-icon" do %>
+                                <i class="fab fa-trash fa" style="color:#FAFAFA; top: 32px; margin-right: 10px; margin-left: 5px; font-size: medium;"></i>
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+        <div id="sub" style="max-width: 768px; min-width: 500px;">
+            <%= link_to root_path, :class => "btn-gradient", :style => "margin-left: 0px;" do %>
+                <span style="transform: skew(-20deg);">Back</span>
+            <% end %>
+            <% if admin_signed_in? %>
+                <%= link_to new_project_path, :class => "btn-gradient", :style => "margin-right: 0px;" do %>
+                    <span style="transform: skew(-20deg);">Create Project</span>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</body>

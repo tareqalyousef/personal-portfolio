@@ -1,0 +1,34 @@
+<%= stylesheet_link_tag "projects" %>
+
+<body>
+    <div id="page-container">
+        <div id="title">
+            <p style="font-size: 350%; color: #ffffff; margin: 0px; text-align: center; line-height: 128px;">Create Project</p>
+        </div>
+
+        <%= bootstrap_form_with(model: @project, url: projects_path, method: :post, local: true) do |form| %>
+            <% if @project.errors.any? %>
+            <div class="error">
+                <% @project.errors.full_messages.each do |message| %>
+                  <%= message %></br>
+                <% end %>
+            </div>
+            <% end %>
+            
+            <div style="width: 800px; margin: 0 auto">
+                <%= form.text_field :title, control_class: "input", label_class: "input-label" %>
+                <%= form.text_area :body, control_class: "input", label_class: "input-label", style: "min-height: 128px; height: 256px; margin: 0px; overflow-y: scroll;" %>
+                <%= form.text_field :description, control_class: "input", label_class: "input-label" %>
+                <%= form.text_field :status, control_class: "input", label_class: "input-label" %>
+                <%= form.text_field :github_link, control_class: "input", label_class: "input-label" %>
+                <%= form.text_field :external_link, control_class: "input", label_class: "input-label" %>
+
+                <div id="sub">
+                <%= link_to projects_path, :class => "btn-gradient", :style => "margin-left: 0px;" do %>
+                    <span style="transform: skew(-20deg);">Back</span>
+                <% end %>
+                <button name="button" type="submit" class="btn-gradient" style="margin-right: 0px; outline: none;"><span style="transform: skew(-20deg);">Create Project</span></button>
+            </div>
+        <% end %>
+    </div>
+</body>

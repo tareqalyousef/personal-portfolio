@@ -1,0 +1,17 @@
+<%= stylesheet_link_tag "projects" %>
+
+<body>
+    <div id="page-container">
+        <div id="title">
+            <p style="font-size: 350%; color: #ffffff; margin: 0px; text-align: center; line-height: 128px;"><%= @project.title %></p>
+        </div>
+        <div id="content">
+            <%= markdown(@project.body) %>
+        </div>
+        <div id="sub">
+            <%= link_to projects_path, :class => "btn-gradient", :style => "margin-left: 0px;" do %>
+                <span style="transform: skew(-20deg);">Back</span>
+            <% end %>
+        </div>
+    </div>
+</body>

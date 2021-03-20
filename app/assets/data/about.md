@@ -1,0 +1,7 @@
+Hi, I'm Tareq Alyousef.
+
+I am pursuing a Bachelor's in Computer Science and a minor in Mathematics with a Data Science concentration on a pre-med track at the University of Memphis.
+
+I've been creating video games ever since I discovered the Blender Game Engine when I was 12 years old. Over these years, I've picked up skills in programming, modeling, animating, and texturing.
+
+These interests later grew into data science-- today, I spend most my time studying financial markets through algorithmic trading.

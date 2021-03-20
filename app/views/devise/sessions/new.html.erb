@@ -1,0 +1,22 @@
+<body>
+    <div id="page-container">
+        <div id="title">
+            <p style="font-size: 350%; color: #ffffff; margin: 0px; text-align: center; line-height: 128px;">Admin Sign In</p>
+        </div>
+
+        <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
+            
+            <div style="width: 800px; margin: 0 auto">
+                <%= form.email_field :email, control_class: "input", label_class: "input-label" %>
+                <%= form.password_field :password, control_class: "input", label_class: "input-label" %>
+                <div id="sub">
+                <%= link_to home_path, :class => "btn-gradient", :style => "margin-left: 0px;" do %>
+                    <span style="transform: skew(-20deg);">Back</span>
+                <% end %>
+                <button name="button" type="submit" class="btn-gradient" style="margin-right: 0px; outline: none;"><span style="transform: skew(-20deg);">Log In</span></button>
+            </div>
+        <% end %>
+    </div>
+</body>
+
+<%= render "devise/shared/links" %>

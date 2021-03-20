@@ -1,0 +1,39 @@
+<html lang="en_us">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+        <%= favicon_link_tag asset_path('favicon.png') %>
+        <script src="https://kit.fontawesome.com/1da41c390e.js" crossorigin="anonymous"></script>
+        <title>Tareq Alyousef</title>
+    </head>
+
+<body style="font-family: Barlow;">
+    <div id="header">
+        <a href="/">
+            <div id="logo">
+                <div style="transform: skewX(-20deg); display: inline-block; color:#ffffff;">T</div>
+            </div>
+        </a>
+        <div style="height: 50px; margin-right: 0px; margin-left: 70px;">
+            <div id="parallelogram">
+                <div style="left: 0px; height: 50px; width: 20px"></div>
+                    <%= link_to "About", about_path, class: "header-link", style: "color: #ffffff;" %>
+                    <%= link_to "Projects", projects_path, class: "header-link", style: "color: #ffffff;" %>
+                    <%= link_to "Posts", posts_path, class: "header-link", style: "color: #ffffff;" %>
+                    <%= link_to "Resume", "/resume.pdf", target: :_blank, class: "header-link", style: "color: #ffffff;" %>
+                <div style="right: 0px; height: 50px; width: 20px"></div>
+            </div>
+        </div>
+    </div>
+    <%= yield %>
+    <% if admin_signed_in? %>
+        <%= link_to destroy_admin_session_path, method: :delete, :class => "glow-icon" do %>
+            <i class="fab fa-sign-out-alt fa" style="color:#ffffff; bottom: 24px; right: 24px; font-size: large; position: fixed;"></i>
+        <% end %>
+    <% end %>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<%= stylesheet_link_tag "pages" %>
+
+<body>
+    <div id="page-container">
+        <div id="title">
+            <p style="font-size: 350%; color: #ffffff; margin: 0px; text-align: center; line-height: 128px;">About</p>
+        </div>
+        <div id="content">
+            <%= markdown(File.read(Rails.root + "app/assets/data/about.md")) %>
+        </div>
+        <div id="sub">
+            <%= link_to home_path, :class => "btn-gradient", :style => "margin-left: 0px;" do %>
+                <span style="transform: skew(-20deg);">Back</span>
+            <% end %>
+        </div>
+    </div>
+</body>

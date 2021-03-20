@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag "posts" %>
+<%= stylesheet_link_tag "application" %>
+
+<body>
+    <div id="page-container">
+        <div id="title">
+            <p style="font-size: 350%; color: #ffffff; margin: 0px; text-align: center; line-height: 90px;"><%= @post.title %></p>
+            <p style="font-size: 120%; color: #ffffff; margin: 0px; margin-bottom: 10px; text-align: center; overflow: hidden; white-space:nowrap;">
+                <% if @post.updated_at.to_date != @post.created_at.to_date %>
+                <i>Created: <span style="color: rgb(93, 170, 250);"><%= @post.created_at.strftime("%m/%d/%Y") %></span>, Last Updated: <span style="color: rgb(93, 170, 250);"><%= @post.updated_at.strftime("%m/%d/%Y") %></span></i>
+                <% else %>
+                <i>Created: <span style="color: rgb(93, 170, 250);"><%= @post.created_at.strftime("%m/%d/%Y") %></span></i>
+                <% end %>
+            </p>
+        </div>
+        <div id="content" style="vertical-align: middle">
+            <%= markdown(@post.body) %>
+        </div>
+        <div id="sub">
+            <%= link_to posts_path, :class => "btn-gradient", :style => "margin-left: 0px;" do %>
+                <span style="transform: skew(-20deg);">Back</span>
+            <% end %>
+        </div>
+    </div>
+</body>

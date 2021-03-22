@@ -1,5 +1,7 @@
 @import "bootstrap";
 @import url(https://fonts.googleapis.com/css?family=Barlow:400);
+@import url(https://fonts.googleapis.com/css?family=Exo:400);
+
 
 $input-btn-font-family : null !default;
 $btn-font-family : $input-btn-font-family !default;
@@ -123,13 +125,13 @@ ul.list-index{
 
 #content {
     font-size: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(220, 220, 220);
     overflow: hidden;
     margin: 0 auto;
     min-width: 500px;
     max-width: 1024px;
     border-color:rgba(255,255,255,0.9);
-    background: -webkit-linear-gradient(right, rgba(50, 50, 50, 0.1), rgba(50, 50, 50, 0.3));
+    background: rgba(50, 50, 50, 0.3);
     border-radius:3px;
     box-shadow: 0px 0px 2px rgb(136, 136, 136);
     padding: 32px;

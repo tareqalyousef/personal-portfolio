@@ -5,11 +5,15 @@ module ApplicationHelper
         def block_code(code, language)
             format = CodeRay.scan(code, language, :ruby).div()
 
-            %(<div style="background: rgb(0, 5, 24); margin-left: -32px; margin-right: -32px; text-align: left;">#{format}</div>)
+            %(<div style="background: rgb(0, 5, 24); box-shadow: 0 0px 12px rgb(10, 10, 10); border-radius: 5px; text-align: left; width: 420px; margin: 0 auto; font-size: 80%;">#{format}</div>)
         end
 
         def link(link, title, content)
             %(<a href="#{link}" class="glow-text">#{content}</a>)
+        end
+        
+        def header(text, header_level)
+            %(<h#{header_level}>#{text}</h#{header_level}>)
         end
 
         def block_quote(quote)
@@ -21,7 +25,7 @@ module ApplicationHelper
         end
 
         def codespan(text)
-            %(<span style="background: rgb(0, 5, 24); border-radius: 5px; font-family: Consolas; font-size: 70%; padding: 5px;">#{text}</span>)
+            %(<span style="background: rgb(0, 5, 24); color: yellow; border-radius: 5px; font-family: Consolas; font-size: 70%; padding: 5px;">#{text}</span>)
         end
     end
 

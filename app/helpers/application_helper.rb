@@ -5,7 +5,7 @@ module ApplicationHelper
         def block_code(code, language)
             format = CodeRay.scan(code, language, :ruby).div()
 
-            %(<div style="background: rgb(0, 5, 24); box-shadow: 0 0px 12px rgb(10, 10, 10); border-radius: 5px; text-align: left; width: 420px; margin: 0 auto; font-size: 80%;">#{format}</div>)
+            %(<div style="background: rgb(0, 5, 24); box-shadow: 0 0px 12px rgb(0, 0, 0); border-radius: 5px; text-align: left; width: 420px; margin: 0 auto; font-size: 80%;">#{format}</div>)
         end
 
         def link(link, title, content)

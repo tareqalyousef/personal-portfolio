@@ -3,7 +3,7 @@
 <body>
     <div id="page-container">
         <div id="title">
-            <p style="font-size: 350%; color: #ffffff; margin: 0px; text-align: center; line-height: 128px;">Posts</p>
+            <p style="font-size: 280%; color: #ffffff; margin: 0px; text-align: center; line-height: 128px;">Posts</p>
         </div>
         <% @posts.each do |p| %>
             <div class="entry">
@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div style="width: 100%; height: 20px; display: flex; line-height: 20px;">
-                    <div style="height: 20px; overflow: hidden; line-height: 20px; flex-grow: 1; margin-top: 10px; margin-left: 10px;">
+                    <div style="height: 20px; line-height: 20px; flex-grow: 1; margin-top: 10px; margin-left: 10px; overflow: hidden;">
                         <%= p.description %>
                     </div>
                     <% if admin_signed_in? %>
@@ -23,7 +23,6 @@
                             <%= link_to edit_post_path(p), :class => "glow-icon" do %>
                                 <i class="fab fa-edit fa" style="color:#FAFAFA;  margin-right: 5px; margin-left: 10px; font-size: medium; margin-top: 10px"></i>
                             <% end %>
-
                             <%= link_to destroy_post_path(p), method: :delete, :class => "glow-icon" do %>
                                 <i class="fab fa-trash fa" style="color:#FAFAFA; top: 32px; margin-right: 10px; margin-left: 5px; font-size: medium;"></i>
                             <% end %>
